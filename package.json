@@ -1,7 +1,7 @@
 {
-  "name": "butter-component-show-detail",
+  "name": "butter-component-stars",
   "version": "0.0.2",
-  "description": "A Butter Component to show Seasons and Episode Lists, as well as Episode Info",
+  "description": "A Butter Component to display rating stars",
     "scripts": {
         "build": "webpack --config node_modules/butter-component-builder/webpack.build.js --progress --profile --colors",
         "start": "node node_modules/butter-component-builder/server.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/buttercomponents/butter-component-show-detail.git"
+    "url": "https://github.com/buttercomponents/butter-component-stars.git"
   },
   "keywords": [
     "react",
@@ -25,13 +25,10 @@
   "author": "Niv Sardi <x@btn.sh>",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/buttercomponents/butter-component-show-detail/issues"
+    "url": "https://github.com/buttercomponents/butter-component-stars/issues"
   },
-  "homepage": "https://github.com/buttercomponents/butter-component-show-detail",
-  "dependencies": {
-      "butter-component-show-info": "*"
-  },
-    "devDependencies": {
-        "butter-component-builder": "*"
-    }
+  "homepage": "https://github.com/buttercomponents/butter-component-stars",
+  "devDependencies": {
+      "butter-component-builder": "*"
+  }
 }

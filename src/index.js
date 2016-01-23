@@ -1,65 +1,30 @@
 import React, { Component } from 'react';
+export default class Stars extends Component {
+    defaultProps: {
+        percentage: 0
+    };
 
-//import i18n from './language';
+    render () {
+        let stars = [];
+        let p_rating = Math.round (this.props.percentage/10)/2;
 
-import moment from 'moment';
+        for (var i = 1; i <= Math.floor(p_rating); i++) {
+            stars.push(<i is="star" className="fa fa-star rating-star" key={stars.length}></i>)
+        }
+        if (p_rating %1>0) {
+            stars.push(<span className="fa-stack rating-star-half-container" key={stars.length}>
+                       <i className="fa fa-star fa-stack-1x rating-star-half-empty"></i>
+                       <i className="fa fa-star-half fa-stack-1x rating-star-half"></i>
+                       </span>)
+        }
+        for (var i = Math.ceil(p_rating); i < 5; i++) {
+            stars.push(<i is="star" className="fa fa-star-outline" key={stars.length}></i>)
+        }
 
-import Stars from './Stars';
-import CloseButton from './CloseButton';
-import ShowInfo from 'butter-component-show-info';
-
-import style from './styl/show_detail.styl';
-
-class debug extends Component {
-    render() {
         return (
-            <h1>debug</h1>
+            <div data-toggle="tooltip" data-placement="right" title={Math.round(this.props.percentage) / 10 + "/10"} className="star-container-tv">
+                {stars}
+            </div>
         )
     }
 }
-
-let HeaderInfo = (props) => (<div className={style['header-info']}>
-    <div className={style['tv-meta-data']}>
-        <div className={style['tv-title']}>{props.title}</div>
-        <div className={style['tv-year']}>{props.year}</div>
-        <div className={style['tv-dot']}></div>
-        <div className={style['tv-runtime']}>{props.runtime + 'min'}</div>
-        <div className={style['tv-dot']}></div>
-
-        <div className={style['tv-status']}>{props.status?i18n.__(props.status) : i18n.__('N/A')}</div>
-        <div className={style['tv-dot']}></div>
-        <div className={style['tv-genre']}>{i18n.__(props.genres[0])}</div>
-        <div className={style['tv-dot']}></div>
-        <div data-toggle="tooltip" data-placement="top" title={i18n.__('Open IMDb page')} className="show-imdb-link"></div>
-        <div className={style['tv-dot']}></div>
-        <div className={style['rating-container-tv']}>
-            <Stars percentage={Math.round(props.rating.percentage) / 20} />
-            <div className="number-container-tv hidden">{Math.round(props.rating.percentage) / 10} <em>/10</em></div>
-        </div>
-        <div className={style['tv-overview']}>{props.synopsis}</div>
-        <div className="favourites-toggle">{i18n.__('Add to bookmarks')}</div>
-        <div className="show-watched-toggle">{i18n.__('Mark as Seen')}</div>
-    </div>
-</div>);
-
-let ShowHeader = (props) => (
-    <div className={style['header']}>
-        <div data-bgr={ props.images.fanart } className={style['tv-poster-background']}><div className={style['tv-poster-overlay']}></div></div>
-        <div className={style['header-image']}>
-            <div data-bgr={ props.images.poster } className={style['tv-cover']}></div>
-        </div>
-        <HeaderInfo {...props}/>
-    </div>
-);
-
-let ShowDetail = (props) => (
-    <div style={{backgroundColor: 'black'}}>
-        <div className={style['container']}>
-            <CloseButton />
-            <ShowHeader {...props}/>
-            <ShowInfo {...props}/>
-        </div>
-    </div>
-)
-
-export default ShowDetail;
