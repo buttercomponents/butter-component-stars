@@ -1,8 +1,10 @@
 {
   "name": "butter-component-stars",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A Butter Component to display rating stars",
+  "main": "dist/bundle.js",
     "scripts": {
+        "prepublish": "npm run build",
         "build": "webpack --config node_modules/butter-component-builder/webpack.build.js --progress --profile --colors",
         "start": "node node_modules/butter-component-builder/server.js",
         "lint": "eslint src"
